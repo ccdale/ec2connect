@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ec2connect"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["ccdale <chris.allison@hivehome.com>"]
 
@@ -9,7 +9,7 @@ python = "^3.10"
 boto3 = "^1.21.17"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
