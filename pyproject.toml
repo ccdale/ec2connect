@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ec2connect"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["ccdale <chris.allison@hivehome.com>"]
 
