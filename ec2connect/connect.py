@@ -21,14 +21,26 @@ def mkSession(profile=None, region=None):
             os.environ.setdefault("AWS_PROFILE", profile)
         if region is not None:
             os.environ.setdefault("AWS_DEFAULT_REGION", region)
-        return boto3.Session()
+        return boto3.session.Session()
     except Exception as e:
         errorNotify(sys.exc_info()[2], e)
 
 
-def mkClient(sess, ctype="ec2"):
+def mkClient(ctype="ec2", profile=None, region=None, config=None):
+    """Returns a boto3 client of type ctype"""
     try:
-        client = sess.client(ctype)
-        pass
+        kwargs = {"profile": profile, "region": region}
+        sess = mkSession(**kwargs)
+        return sess.client(ctype, config=config)
+    except Exception as e:
+        errorNotify(sys.exc_info()[2], e)
+
+
+def mkResource(rtype="ec2", profile=None, region=None, config=None):
+    """Returns a boto3 resource of type rtype"""
+    try:
+        kwargs = {"profile": profile, "region": region}
+        sess = mkSession(**kwargs)
+        return sess.Resource(rtype, config=config)
     except Exception as e:
         errorNotify(sys.exc_info()[2], e)
